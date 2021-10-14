@@ -76,15 +76,13 @@ module.exports = class BinarySearchTree {
   }
 
   remove(data) {
-    throw new NotImplementedError('Not implemented');
-    /* this.val = removeNode(this.val, data);
+    this.val = removeNode(this.val, data);
 
     function removeNode(node, data) {
-      // если такого узла нет
       if(!node) {
         return null;
       }
-      // если data больше либо меньше
+
       if(data < node.data) {
         node.left = removeNode(node.left, data);
         return node;
@@ -92,44 +90,55 @@ module.exports = class BinarySearchTree {
         node.right = removeNode(node.right, data);
         return node;
       } else {
-        //если нет обоих потомков(тюе это лист)
-        if(!node.left && !node.right) {
+        if(!node. left && !node.right) {
           return null;
         }
 
-        //если нет левого потомка
         if(!node.left) {
           node = node.right;
           return node;
         }
 
-        // если нет правого потомка
         if(!node.right) {
           node = node.left;
           return node;
         }
 
-        let minFromRight = node.right;
-        while(minFromRight.left) {
-          minFromRight = minFromRight.left;
+        let minFromR = node.right;
+        while(minFromR.left) {
+          minFromR = minFromR.left;
         }
-        node.data = minFromRight.value
-
-        node.right = removeNode(node.right, minFromRight.value);
-
+        node.data = minFromR.data;
+        node.right = removeNode(node.right, minFromR.data);
         return node;
       }
-    } */
+    }
   }
 
   min() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    if(!this.val) {
+      return;
+    }
+
+    let node = this.val;
+    while(node.left) {
+      node = node.left;
+    }
+
+    return node.data;
   }
 
   max() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    if(!this.val) {
+      return;
+    }
+
+    let node = this.val;
+    while(node.right) {
+      node = node.right;
+    }
+
+    return node.data;
   }
 
 }
